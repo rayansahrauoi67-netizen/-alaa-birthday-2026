@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Birthday Alaa ♡</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#100b10;color:#fff0f6;font-family:Georgia,serif;text-align:center;overflow-x:hidden}
+main{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:25px}
+.card{width:100%;max-width:480px;padding:35px 22px;border:1px solid #ff85b533;border-radius:28px;background:linear-gradient(145deg,#25121f,#100b10);box-shadow:0 0 45px #ff4b9720}
+h1{font-size:clamp(34px,9vw,52px);color:#ff9bc7;margin:15px 0}
+p{line-height:1.8;color:#f6dce9}
+button,input{font:inherit;border-radius:25px;padding:13px 18px;margin:8px;border:1px solid #ff9bc7}
+button{background:#ff8fbe;color:#250b19;cursor:pointer;font-weight:bold}
+input{background:#1c101a;color:white;width:85%;text-align:center}
+.page{display:none}.page.active{display:block}
+.rose{font-size:60px;animation:float 3s infinite ease-in-out}
+.petal{position:fixed;top:-30px;pointer-events:none;animation:fall linear forwards}
+@keyframes float{50%{transform:translateY(-12px) rotate(5deg)}}
+@keyframes fall{to{transform:translateY(110vh) rotate(600deg);opacity:0}}
+.letter{white-space:pre-line;font-size:17px}
+</style>
+</head>
+<body>
+<main>
+<section class="card page active" id="one">
+<div class="rose">🌹</div>
+<p>♡ A little surprise made just for you ♡</p>
+<h1>Happy Birthday, Alaa!</h1>
+<p>Today is all about you, your smile, and the beautiful person you are.</p>
+<button onclick="showPage('two')">Open Your Surprise ♡</button>
+</section>
+
+<section class="card page" id="two">
+<div class="rose">💗</div>
+<h1>A Secret Question</h1>
+<p>Who is the person you love the most in this world? ♡</p>
+<form onsubmit="checkAnswer(event)">
+<input id="answer" placeholder="Type your answer..." required>
+<br><button type="submit">Unlock My Surprise</button>
+</form>
+<p id="hint"></p>
+</section>
+
+<section class="card page" id="three">
+<div class="rose">🌹💗🌹</div>
+<h1>Happy 16th Birthday, Alaa! 🎂</h1>
+<p>✨ Today, the world became brighter because you were born. ✨</p>
+<div class="letter">Dear Alaa,
+
+I hope your 16th birthday is filled with happiness, beautiful moments, and endless smiles.
+
+You deserve all the wonderful things life has to offer. May your dreams come true and your heart always find reasons to smile.
+
+This little surprise was made especially for you, to remind you how special you are.
+
+Happy Birthday, Alaa. ♡
+
+With love,
+Rayan ♡</div>
+<p>🌹 ♡ 🎁 ♡ 🌹</p>
+<button onclick="showPage('one')">Replay the Surprise ↻</button>
+</section>
+</main>
+<script>
+function showPage(id){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+}
+function checkAnswer(e){
+e.preventDefault();
+const a=document.getElementById('answer').value.trim().toLowerCase();
+if(a==='rayan'||a==='ريان'){
+showPage('three');
+}else{
+document.getElementById('hint').textContent='Try again, my dear ♡';
+}
+}
+const flowers=['🌸','🌹','💗','✨'];
+setInterval(()=>{
+const p=document.createElement('span');
+p.className='petal';
+p.textContent=flowers[Math.floor(Math.random()*flowers.length)];
+p.style.left=Math.random()*100+'vw';
+p.style.animationDuration=(4+Math.random()*5)+'s';
+p.style.fontSize=(15+Math.random()*18)+'px';
+document.body.appendChild(p);
+setTimeout(()=>p.remove(),9500);
+},500);
+</script>
+</body>
+</html>
